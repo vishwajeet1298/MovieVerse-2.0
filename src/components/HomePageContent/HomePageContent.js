@@ -44,7 +44,7 @@ function HomePageContent({ searchQuery }) {
             callApi(nowPlayingMoviesApiUrl, setNowPlayingMovies),
             callApi(upcomingMoviesApiUrl, setUpcomingMovies)
         ]).then(() => setLoading(false));
-    }, []);
+    }, [topRatedMoviesApiUrl,popularMoviesApiUrl,nowPlayingMoviesApiUrl,upcomingMoviesApiUrl]);
 
     useEffect(() => {
         if (searchQuery) {
@@ -53,7 +53,7 @@ function HomePageContent({ searchQuery }) {
         else {
             setSearchResults([]);
         }
-    }, [searchQuery]);
+    }, [searchQuery,searchMoviesApiUrl]);
 
     return (
         <div className="homepagecontent_container" style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none' }}>

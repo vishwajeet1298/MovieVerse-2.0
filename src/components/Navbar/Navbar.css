@@ -1,0 +1,66 @@
+:root {
+    --primary-color: #007bff;
+    --primary-color-hover: #0056b3;
+    --border-color: #2d2d2f;
+    --input-border-color: #ccc;
+}
+
+.navbar_container {
+    /* background: linear-gradient(to bottom, #1e5799, #ffffff); */
+    /* background-color: #141415; */
+    /* background: linear-gradient(135deg, #ff4e50, #f9d423); */
+    /* background: linear-gradient(135deg, #41295a, #2f0743); */
+    background: linear-gradient(135deg,#000428, #004e92, #000428);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    border-bottom: 1px solid var(--border-color);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar_logo {
+    width: 50px;
+}
+
+.navbar_input_field {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+}
+
+.navbar_button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.navbar_button:hover {
+    background-color: var(--primary-color-hover);
+}
+.navbar_logo_button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+@media (max-width: 600px) {
+    .navbar_container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .navbar_logo {
+        margin-bottom: 10px;
+    }
+}

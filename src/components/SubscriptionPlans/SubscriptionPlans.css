@@ -1,0 +1,71 @@
+.subscription_plans {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #000428, #004e92);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.plan_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    cursor: pointer;
+    border: 1px solid #444;
+    background-color: #2c2c2e;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1.5rem;
+    margin: 1rem;
+}
+
+.plan_item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.plan_item.selected {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 16px rgba(153, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: var(--primary-color);
+}
+
+.pay_button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pay_button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}

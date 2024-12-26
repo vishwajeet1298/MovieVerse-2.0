@@ -1,0 +1,52 @@
+.homepagecontent_container {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out;
+    position: relative;
+    min-height: 100vh;
+}
+
+.homepagecontent_container:focus {
+    outline: 2px solid #004e92;
+    outline-offset: 4px;
+}
+
+.animation_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000428, #004e92);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.animation_background.active {
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.row_container {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .homepagecontent_container {
+        background-size: contain;
+    }
+}
+

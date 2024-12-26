@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+}
+
+.signinbody_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #000428, #004e92);
+}
+
+.signinbody_form {
+    display: flex;
+    flex-direction: column;
+    background-color: #BBD2C5;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+
+.signinbody_title {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.signinbody_form > input,
+.signinbody_form > button {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.signinbody_form > input {
+    background-color: #f0f0f0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.signinbody_form > input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px #007BFF;
+}
+.input_error {
+    border-color: #ff4d4d;
+}
+
+.signinbody_form > button {
+    background-color: #0056b3;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+}
+
+.signinbody_form > button:hover {
+    background-color: #333; 
+}
+.signinbody_form > button:active {
+    transform: scale(0.98); 
+}
+.signinbody_form > button:focus {
+    outline: 2px solid #0056b3; 
+    outline-offset: 2px;
+}
+.signinbody_form > button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.error_message {
+    color: #ff4d4d;
+    background-color: #ffe6e6;
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    margin-top: 5px; 
+    margin-bottom: 5px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.error_message::before {
+    content: "⚠️"; 
+    margin-right: 5px; 
+}
+.signinbody_text {
+    font-weight: 700;
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+}
+
+.signinbody_text > span {
+    color: #007BFF;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.signinbody_text > span:hover {
+    color: #0056b3;
+}
+
+
+@media (max-width: 600px) {
+    .signinbody_form {
+        padding: 30px 20px;
+    }
+}

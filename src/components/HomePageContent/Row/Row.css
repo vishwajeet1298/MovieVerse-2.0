@@ -1,0 +1,98 @@
+.row_container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px; 
+    background-size: cover; 
+    background-position: center;
+    transition: background-image 0.5s ease-in-out; 
+}
+
+.row_container_title {
+    font-size: 24px;
+    color: #d3d3d3;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.movies_row_container {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.movies_row_container::-webkit-scrollbar {
+    height: 8px;
+    border-radius: 16px;
+}
+
+.movies_row_container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 16px;
+}
+
+.movies_row_container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 16px;
+    border: 2px solid #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+.movies_row_container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.movies_row_container::-webkit-scrollbar-thumb:active {
+    background-color: #333;
+}
+
+.movies_row {
+    flex: 1 1 200px;
+    margin: 5px;
+    text-align: center;
+}
+
+.movies_row > img {
+    height: 200px;
+    object-fit: cover;
+    margin: 2px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.movies_row > img:hover {
+    transform: scale(1.15);
+}
+
+.movies_row > img:focus {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+.movie_title {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #fff; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 2px 5px;
+    border-radius: 3px;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+}
+
+@media (max-width: 600px) {
+    .movies_row > img {
+        height: 150px;
+    }
+    .row_container_title {
+        font-size: 18px;
+    }
+}

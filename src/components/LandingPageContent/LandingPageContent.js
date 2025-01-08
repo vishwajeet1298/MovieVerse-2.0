@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LandingPageContent.css";
 
@@ -80,6 +80,7 @@ function LandingPageContent() {
                 <div className="tooltip">
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7010934989609406465/" target="_blank" rel="noopener noreferrer">Highlights</a>
                     <span className="tooltiptext">Featured Work</span>
+                    
                 </div>
             </div>
         </div>

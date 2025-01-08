@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./HomePageContent.css";
 import Row from './Row/Row';
 import SearchResults from './SearchResults';
+import SkeletonRow from './SkeletonRow';
 
 function HomePageContent({ searchQuery }) {
     const API_KEY = "1d655c4ccbc381a2086729ded33d7583";
@@ -22,19 +23,20 @@ function HomePageContent({ searchQuery }) {
     const upcomingMoviesApiUrl = `${BASE_URL}/movie/upcoming?api_key=${API_KEY}`;
     const searchMoviesApiUrl = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`;
 
-    function callApi(url, setVariable) {
-        return fetch(url)
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return res.json();
-            })
-            .then((data) => setVariable(data.results))
-            .catch((err) => {
-                console.log('Fetch error: ', err);
-                setError(err.message);
-            });
+    async function callApi(url, setVariable) {
+        try {
+            const res = await fetch(url);
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await res.json();
+            // await new Promise(resolve => setTimeout(resolve, 20000));
+
+            setVariable(data.results);
+        } catch (err) {
+            console.log('Fetch error: ', err);
+            setError(err.message);
+        }
     }
 
     useEffect(() => {
@@ -44,57 +46,57 @@ function HomePageContent({ searchQuery }) {
             callApi(nowPlayingMoviesApiUrl, setNowPlayingMovies),
             callApi(upcomingMoviesApiUrl, setUpcomingMovies)
         ]).then(() => setLoading(false));
-    }, [topRatedMoviesApiUrl,popularMoviesApiUrl,nowPlayingMoviesApiUrl,upcomingMoviesApiUrl]);
+    }, [topRatedMoviesApiUrl, popularMoviesApiUrl, nowPlayingMoviesApiUrl, upcomingMoviesApiUrl]);
 
     useEffect(() => {
         if (searchQuery) {
             callApi(searchMoviesApiUrl, setSearchResults);
-        }
-        else {
+        } else {
             setSearchResults([]);
         }
-    }, [searchQuery,searchMoviesApiUrl]);
+    }, [searchQuery, searchMoviesApiUrl]);
 
     return (
         <div className="homepagecontent_container" style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none' }}>
-            {loading ? <p>Loading...</p> : error ? <p>Error: {error}</p> : (
+            {loading ? (
+                <>
+                    <SkeletonRow />
+                    <SkeletonRow />
+                    <SkeletonRow />
+                    <SkeletonRow />
+                </>
+            ) : error ? (
+                <p>Error: {error}</p>
+            ) : (
                 <>
                     {searchQuery && searchResults.length > 0 ? (
                         <SearchResults searchResults={searchResults} setBackgroundImage={setBackgroundImage} />
                     ) : (
                         <>
-                            {nowPlayingMovies.length > 0 && (
-                                <Row
-                                    rowTitle="Now Playing Movies"
-                                    moviesArray={nowPlayingMovies}
-                                    posterPath={true}
-                                    setBackgroundImage={setBackgroundImage}
-                                />
-                            )}
-                            {upcomingMovies.length > 0 && (
-                                <Row
-                                    rowTitle="Upcoming Movies"
-                                    moviesArray={upcomingMovies}
-                                    posterPath={true}
-                                    setBackgroundImage={setBackgroundImage}
-                                />
-                            )}
-                            {topRatedMovies.length > 0 && (
-                                <Row
-                                    rowTitle="Top Rated Movies"
-                                    moviesArray={topRatedMovies}
-                                    posterPath={true}
-                                    setBackgroundImage={setBackgroundImage}
-                                />
-                            )}
-                            {popularMovies.length > 0 && (
-                                <Row
-                                    rowTitle="Popular Movies"
-                                    moviesArray={popularMovies}
-                                    posterPath={true}
-                                    setBackgroundImage={setBackgroundImage}
-                                />
-                            )}
+                            <Row
+                                rowTitle="Now Playing Movies"
+                                moviesArray={nowPlayingMovies}
+                                posterPath={true}
+                                setBackgroundImage={setBackgroundImage}
+                            />
+                            <Row
+                                rowTitle="Upcoming Movies"
+                                moviesArray={upcomingMovies}
+                                posterPath={true}
+                                setBackgroundImage={setBackgroundImage}
+                            />
+                            <Row
+                                rowTitle="Top Rated Movies"
+                                moviesArray={topRatedMovies}
+                                posterPath={true}
+                                setBackgroundImage={setBackgroundImage}
+                            />
+                            <Row
+                                rowTitle="Popular Movies"
+                                moviesArray={popularMovies}
+                                posterPath={true}
+                                setBackgroundImage={setBackgroundImage}
+                            />
                         </>
                     )}
                 </>
